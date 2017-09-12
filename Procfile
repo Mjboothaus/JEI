@@ -1,1 +1,1 @@
-web: gunicorn JustEatIt:JustEatIt
+web: gunicorn JustEatIt:app
