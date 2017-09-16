@@ -9,9 +9,9 @@ from flask import Flask, render_template, request
 from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
 from flask import Flask
-from flask.ext.cache import Cache
+from flask_cache import Cache
 
-from wtforms import StringField, SubmitField
+from wtforms import StringField, SubmitField, SelectField
 from wtforms.validators import DataRequired, Length, AnyOf
 
 import yummly
@@ -28,14 +28,25 @@ API_KEY = 'f69184af19beb4b76e7b7b1984046581'
 # TODO: Look at saving down / caching queries for re-use to avoid using up too many queries
 # TODO: Can I use the Beaker library for this? http://beaker.readthedocs.io/en/latest/index.html
 
+# TODO: Caching: The API supports caching through the use of the ETag and Last-Modified
+# response headers and the corresponding If-None-Match and If-Modified-Since request headers.
+# Clients are encouraged to use these to improve performance. The API will return status code 304
+# if the cached data is still valid.
+
 # TODO: Need to get templated code into html files
 
-class SearchRecipeForm(FlaskForm):
+class SpecifyDietForm(FlaskForm):
+    dietary_types = [('Allergy', 'Allergy'), ('Belief', 'Belief'), ('Health', 'Health'),
+                     ('Preference', 'Preference'), ('Wellness', 'Wellness'),
+                     ('Other  specify', 'Other  specify')]
+
+    dietary_choice = SelectField(u'Dietary Type', choices=dietary_types)
+
     # TODO: Improve validation
 
-    search_terms = StringField(u'Recipe search terms:',
+    search_terms = StringField(u'Ingredient restrictions: ',
                                validators=[DataRequired(), Length(min=2, max=25)],
-                               default='Green eggs and ham')
+                               default='Enter a comma separated list e.g. milk, peanuts, ...')
 
     submit = SubmitField('Submit')
 
@@ -64,14 +75,21 @@ def index():
 
 @app.route('/search_recipe', methods=['GET', 'POST'])
 @cache.cached(timeout=50)
-def searchrecipe():
-    form = SearchRecipeForm()
+def search_recipe():
+    form = SpecifyDietForm()
+
     return render_template('search_recipe.html', form=form)
 
 
 @app.route('/recipe', methods=['POST'])
 def recipe():
-    search_terms = request.form.get('search_terms')
+    restricted_ingredients = request.form.get('search_terms')
+    dietary_choice = request.form.get('dietary_choice')
+
+    print restricted_ingredients
+    print dietary_choice
+
+    search_terms = 'tomato'
 
     try:
 

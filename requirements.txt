@@ -1,10 +1,13 @@
+pandas
+jinja2
+pip
 wtforms
 flask
 flask_wtf
-flask_bootstrap
 yummly
 pandas
 numpy
 bokeh
 gunicorn
 requests
+spacy
