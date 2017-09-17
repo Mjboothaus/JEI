@@ -9,7 +9,6 @@ from flask import Flask, render_template, request
 from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
 from flask import Flask
-from flask_cache import Cache
 
 from wtforms import StringField, SubmitField, SelectField
 from wtforms.validators import DataRequired, Length, AnyOf
@@ -57,16 +56,15 @@ def main():
 
 # App configuration
 
-cache = Cache(config={'CACHE_TYPE': 'simple'})
-
-DEBUG = True
+DEBUG = False
 app = Flask(__name__)
 app.config.from_object(__name__)
 app.config['SECRET_KEY'] = '7d441f27d441f27567d441f2b6176a'
-cache.init_app(app)
 
 Bootstrap(app)
 
+
+# Page routes
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
