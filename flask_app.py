@@ -74,7 +74,6 @@ def index():
 
 
 @app.route('/search_recipe', methods=['GET', 'POST'])
-@cache.cached(timeout=50)
 def search_recipe():
     form = SpecifyDietForm()
 
@@ -138,4 +137,4 @@ def recipe():
 
 if __name__ == '__main__':
     main()
-    app.run(port=33507, debug=False)  # TODO: Make sure debug off for deploymentß
+    app.run(port=33507, debug=False)  # TODO: Make sure debug off for deployment
