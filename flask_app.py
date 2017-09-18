@@ -50,10 +50,6 @@ class SpecifyDietForm(FlaskForm):
     submit = SubmitField('Submit')
 
 
-def main():
-    return  # TODO: Clarify - is this just a dummy function?
-
-
 # App configuration
 
 DEBUG = False
@@ -64,12 +60,14 @@ app.config['SECRET_KEY'] = '7d441f27d441f27567d441f2b6176a'
 Bootstrap(app)
 
 
+def main():
+    return  # TODO: Clarify - is this just a dummy function?
+
 # Page routes
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
     return render_template('splash_screen.html')
-
 
 @app.route('/search_recipe', methods=['GET', 'POST'])
 def search_recipe():
