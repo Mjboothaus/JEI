@@ -1,13 +1,4 @@
-pandas
-jinja2
-pip
 wtforms
 flask
 flask_wtf
 yummly
-pandas
-numpy
-bokeh
-gunicorn
-requests
-spacy
