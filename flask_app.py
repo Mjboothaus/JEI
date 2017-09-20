@@ -43,9 +43,9 @@ class SpecifyDietForm(FlaskForm):
 
     # TODO: Improve validation
 
-    search_terms = StringField(u'Ingredient restrictions: ',
-                               validators=[DataRequired(), Length(min=2, max=25)],
-                               default='Enter a comma separated list e.g. milk, peanuts, ...')
+    search_terms = StringField(u'Restrictions: ',
+                               validators=[DataRequired(), Length(min=4, max=45)],
+                               default='Eggs, peanuts, milk')
 
     submit = SubmitField('Submit')
 
