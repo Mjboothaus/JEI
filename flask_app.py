@@ -43,9 +43,11 @@ class SpecifyDietForm(FlaskForm):
 
     # TODO: Improve validation
 
+    default_ingred = 'e.g. milk, peanuts'
+
     search_terms = StringField(u'Restrictions: ',
                                validators=[DataRequired(), Length(min=4, max=45)],
-                               default='Eggs, peanuts, milk')
+                               default=default_ingred)
 
     submit = SubmitField('Submit')
 
@@ -133,4 +135,4 @@ def recipe():
 
 if __name__ == '__main__':
     main()
-    app.run(port=33507, debug=False)  # TODO: Make sure debug off for deployment
+    app.run(port=33509, debug=False)  # TODO: Make sure debug off for deployment

@@ -32,11 +32,11 @@
 
     <div class="jumbotron">
         <h5 class="display-4">Just Eat It - the Friendly Food Advisor</h5>
-        <p class="lead">Please specify some search terms to look for a recipe.</p>
+        <p class="lead">Specify ingredients to exclude from recipes</p>
         <p><a>
             <form method="POST" action="/recipe">
                 {{ form.hidden_tag() }}
-                {{ form.search_terms.label }} {{ form.search_terms(placeholder='Green eggs and ham', maxlength=25, size=25) }}
+                {{ form.search_terms.label }} {{ form.search_terms(placeholder='e.g. milk, egg', maxlength=45, size=45) }}
                 <input type="submit" value="Go">
             </form>
         </a></p>
