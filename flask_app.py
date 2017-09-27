@@ -43,9 +43,11 @@ class SpecifyDietForm(FlaskForm):
 
     # TODO: Improve validation
 
-    search_terms = StringField(u'Ingredient restrictions: ',
-                               validators=[DataRequired(), Length(min=2, max=25)],
-                               default='Enter a comma separated list e.g. milk, peanuts, ...')
+    default_ingred = 'e.g. milk, peanuts'
+
+    search_terms = StringField(u'Restrictions: ',
+                               validators=[DataRequired(), Length(min=4, max=45)],
+                               default=default_ingred)
 
     submit = SubmitField('Submit')
 
@@ -130,7 +132,10 @@ def recipe():
 # for ingred in recipe.ingredientLines:
 #    print(ingred)
 
+# TODO: Put in a user sign-up / two-factor authentication - so that people can store/submit
+#       their dietary restrictions / basic demographic for creating research dataset & accept terms
+
 
 if __name__ == '__main__':
     main()
-    app.run(port=33507, debug=False)  # TODO: Make sure debug off for deployment
+    app.run(port=33509, debug=False)  # TODO: Make sure debug off for deployment

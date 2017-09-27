@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap-theme.min.css"
           integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipe Search</title>
+    <title>Just Eat It: Prefs</title>
     <!-- Custom styles for this template -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/narrow-jumbotron.css" rel="stylesheet">
 </head>
@@ -31,17 +31,17 @@
     </div>
 
     <div class="jumbotron">
-        <h5 class="display-4">Just Eat It - the Friendly Food Finder App</h5>
-        <p class="lead">Please specify some search terms to look for a recipe.</p>
+        <h5 class="display-4">Just Eat It - the Friendly Food Advisor</h5>
+        <p class="lead">Specify ingredients to exclude from recipes</p>
         <p><a>
             <form method="POST" action="/recipe">
                 {{ form.hidden_tag() }}
-                {{ form.search_terms.label }} {{ form.search_terms(placeholder='Green eggs and ham', maxlength=25, size=25) }}
+                {{ form.search_terms.label }} {{ form.search_terms(placeholder='e.g. milk, egg', maxlength=45, size=45) }}
                 <input type="submit" value="Go">
             </form>
         </a></p>
         <h6 class="display-5"><a href="http://www.yummly.com" target="_blank">
-            Click to vist Yummly.com</a></h6>
+            Data courtesy of Yummly.com (Hackathon license)</a></h6>
     </div>
 
 </div>
