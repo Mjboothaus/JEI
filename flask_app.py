@@ -132,6 +132,9 @@ def recipe():
 # for ingred in recipe.ingredientLines:
 #    print(ingred)
 
+# TODO: Put in a user sign-up / two-factor authentication - so that people can store/submit
+#       their dietary restrictions / basic demographic for creating research dataset & accept terms
+
 
 if __name__ == '__main__':
     main()
